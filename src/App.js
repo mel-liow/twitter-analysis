@@ -20,7 +20,10 @@ const App = () => {
       body: JSON.stringify({ twitterHandle }),
     })
       .then((res) => res.json())
-      .then((data) => setWords(data.words))
+      .then((data) => {
+        const words = JSON.parse(data)
+        setWords(words)
+      })
   }
 
   return (

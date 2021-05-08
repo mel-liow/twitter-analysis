@@ -1,11 +1,12 @@
-import time
-import numpy as np
-import matplotlib.pyplot as plt
-import re
-from twython import Twython
 from flask import request
+import numpy as np
+from twython import Twython
+import re
 import string
 import nltk
+import json
+
+from nltk import FreqDist
 from nltk.corpus import stopwords
 nltk.download('stopwords')
 nltk.download('wordnet')
@@ -32,15 +33,16 @@ def get_data():
 	raw_tweets = []
 	for tweets in user_timeline:
 		raw_tweets.append(tweets['text'])
-
 	
 	#Clean up words
 	words_no_punct = remove_punct(raw_tweets)
 	words_tokenized = tokenization(words_no_punct)
 	words_no_stopwords = remove_stopwords(words_tokenized)
-	words_lemmatized = lemmatizer(words_stemmed)
+	words_lemmatized = lemmatizer(words_no_stopwords)
 
-	return { 'words': words_lemmatized }
+	fdist = FreqDist(words_lemmatized)
+	frequent_words = json.dumps(fdist.most_common(40))
+	return frequent_words
 
 
 def remove_punct(text):
