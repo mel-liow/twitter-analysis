@@ -4,6 +4,7 @@ import "./App.css"
 
 const App = () => {
   const [twitterHandle, setTwitterHandle] = useState("")
+  const [words, setWords] = useState([])
 
   const handleChange = (e) => {
     const twitterHandle = e.target.value
@@ -16,12 +17,10 @@ const App = () => {
     return fetch("/twitter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ data: twitterHandle }),
+      body: JSON.stringify({ twitterHandle }),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log("data", data)
-      })
+      .then((data) => setWords(data.words))
   }
 
   return (
@@ -40,6 +39,11 @@ const App = () => {
           </label>
           <input type="submit" value="Submit" />
         </form>
+        <div className="words">
+          {words.map((word) => (
+            <div>{word}</div>
+          ))}
+        </div>
       </header>
     </div>
   )
