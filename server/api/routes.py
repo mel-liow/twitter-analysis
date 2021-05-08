@@ -4,12 +4,14 @@ import matplotlib.pyplot as plt
 import re
 from twython import Twython
 from flask import request
-
+import string
 import nltk
-nltk.download('stopwords')
-
 from nltk.corpus import stopwords
-stopwords.words('english')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+wn = nltk.WordNetLemmatizer()
+stopword = nltk.corpus.stopwords.words('english')
 
 from api import app
 
@@ -19,32 +21,45 @@ twitter = Twython(app.config["TWITTER_KEY"], app.config["TWITTER_SECRET"])
 def get_data():
 	data = request.json
 	twitterHandle = data['twitterHandle']
+
 	#Get timeline 
 	user_timeline=twitter.get_user_timeline(screen_name=twitterHandle,count=1) 
-
-	#get most recent id
 	last_id = user_timeline[0]['id']-1
 	batch = twitter.get_user_timeline(screen_name=twitterHandle,count=200, max_id=last_id)
 	user_timeline.extend(batch)
-	last_id = user_timeline[-1]['id'] - 1
 
 	#Extract textfields from tweets
 	raw_tweets = []
 	for tweets in user_timeline:
 		raw_tweets.append(tweets['text'])
 
+	
+	#Clean up words
+	words_no_punct = remove_punct(raw_tweets)
+	words_tokenized = tokenization(words_no_punct)
+	words_no_stopwords = remove_stopwords(words_tokenized)
+	words_lemmatized = lemmatizer(words_stemmed)
 
-	raw_string = ''.join(raw_tweets)
+	return { 'words': words_lemmatized }
 
-	no_links = re.sub(r'http\S+', '', raw_string)
-	no_unicode = re.sub(r"\\[a-z][a-z]?[0-9]+", '', no_links)
-	no_special_characters = re.sub('[^A-Za-z ]+', '', no_unicode)
 
-	stop_words = set(stopwords.words('english'))
+def remove_punct(text):
+	text = ''.join(text)
+	text = re.sub(r'http\S+', '', text)
+	text = re.sub(r"\\[a-z][a-z]?[0-9]+", '', text)
+	text = re.sub('[^A-Za-z ]+', '', text)
+	return text
 
-	words = no_special_characters.split(" ")
-	words = [w for w in words if len(w) > 2]
-	words = [w.lower() for w in words]
-	words = [w for w in words if w not in stop_words]
+def tokenization(text):
+	text = text.split(" ")
+	return text
 
-	return { 'words': words }
+def remove_stopwords(text):
+	text = [w for w in text if len(w) > 2]
+	text = [w.lower() for w in text]
+	text = [word for word in text if word not in stopword]
+	return text
+
+def lemmatizer(text):
+  text = [wn.lemmatize(word) for word in text]
+  return text
