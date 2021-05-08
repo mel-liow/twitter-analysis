@@ -41,7 +41,7 @@ def get_data():
 	words_lemmatized = lemmatizer(words_no_stopwords)
 
 	fdist = FreqDist(words_lemmatized)
-	frequent_words = json.dumps(fdist.most_common(40))
+	frequent_words = json.dumps(fdist.most_common(50))
 	return frequent_words
 
 

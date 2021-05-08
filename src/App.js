@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import ReactWordcloud from "react-wordcloud"
 
 import "./App.css"
 
@@ -21,7 +22,12 @@ const App = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        const words = JSON.parse(data)
+        const words = data.map((word) => {
+          return {
+            text: word[0],
+            value: word[1],
+          }
+        })
         setWords(words)
       })
   }
@@ -43,9 +49,7 @@ const App = () => {
           <input type="submit" value="Submit" />
         </form>
         <div className="words">
-          {words.map((word) => (
-            <div>{word}</div>
-          ))}
+          <ReactWordcloud words={words} />
         </div>
       </header>
     </div>
