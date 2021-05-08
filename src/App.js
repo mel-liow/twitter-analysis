@@ -5,9 +5,12 @@ import "./App.css"
 const App = () => {
   const [twitterHandle, setTwitterHandle] = useState("")
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
     const twitterHandle = e.target.value
     setTwitterHandle(twitterHandle)
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault()
 
     return fetch("/twitter", {
@@ -32,7 +35,7 @@ const App = () => {
               type="text"
               name="twitter"
               value={twitterHandle}
-              onChange={handleSubmit}
+              onChange={handleChange}
             />
           </label>
           <input type="submit" value="Submit" />
