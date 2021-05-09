@@ -30,12 +30,10 @@ def get_data():
 	user_timeline.extend(batch)
 
 	#Extract textfields from tweets
-	raw_tweets = []
-	for tweets in user_timeline:
-		raw_tweets.append(tweets['text'])
+	tweets = [tweet['text'] for tweet in user_timeline]
 	
 	#Clean up words
-	words_no_punct = remove_punct(raw_tweets)
+	words_no_punct = remove_punct(tweets)
 	words_tokenized = tokenization(words_no_punct)
 	words_no_stopwords = remove_stopwords(words_tokenized)
 	words_lemmatized = lemmatizer(words_no_stopwords)
