@@ -1,24 +1,46 @@
-.App {
-  text-align: center;
-}
 
-.App-header {
+
+.header {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 64px;
+	text-align: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form {
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	
 }
 
-.labels {
-	display: flex;
+.label {
+  font-size: calc(10px + 2vmin);
+	margin-bottom: 16px;
+}
+
+input[type=text] {
+	padding:5px; 
+	border:2px solid #ccc; 
+	border-radius: 5px;
+}
+
+input[type=text]:focus {
+	border-color:#333; 
+}
+
+input[type=submit] {
+	padding:5px 15px; 
+	background:#ccc; 
+	border:0 none;
+	cursor: pointer;
+	border-radius: 5px; 
+	margin-left: 8px;
+}
+	
+
+.twitterHandle {
+  font-size: calc(5px + 2vmin);
 }
 
 .words {

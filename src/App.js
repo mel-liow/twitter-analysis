@@ -33,25 +33,25 @@ const App = () => {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div>{twitterHandle}</div>
-        <form onSubmit={handleSubmit}>
-          <label className="label">
-            Enter Twitter handle:
+    <div className="app">
+      <header className="header">
+        <form className="form" onSubmit={handleSubmit}>
+          <label className="label">Enter Twitter handle below</label>
+          <div>
             <input
               type="text"
               name="twitter"
               value={twitterHandle}
               onChange={handleChange}
             />
-          </label>
-          <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" />
+          </div>
         </form>
-        <div className="words">
-          <ReactWordcloud words={words} />
-        </div>
+        <div className="twitterHandle">{twitterHandle}</div>
       </header>
+      <div className="words">
+        <ReactWordcloud words={words} />
+      </div>
     </div>
   )
 }
