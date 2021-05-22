@@ -37,7 +37,7 @@ const App = () => {
       <header className="App-header">
         <div>{twitterHandle}</div>
         <form onSubmit={handleSubmit}>
-          <label>
+          <label className="label">
             Enter Twitter handle:
             <input
               type="text"
