@@ -11,7 +11,6 @@
 	padding: 16px;
 	display: flex;
 	flex-direction: column;
-	
 }
 
 .label {
@@ -40,6 +39,7 @@ input[type=submit] {
 	
 
 .twitterHandle {
+	margin-top: 16px;
   font-size: calc(5px + 2vmin);
 }
 
