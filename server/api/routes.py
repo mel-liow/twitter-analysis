@@ -1,5 +1,6 @@
 from flask import request
 from .preprocess import PreProcessTweets
+from .analysis import SentimentAnalyser
 from twython import Twython
 from nltk import FreqDist
 from api import app
@@ -29,3 +30,16 @@ def get_data():
 	frequent_words = json.dumps(fdist.most_common(50))
 	return frequent_words
 
+
+@app.route('/sentiment', methods=['POST'])
+def get_sentiment():
+	data = request.json
+	search_term = data['twitterHandle']
+
+	#Get tweets - fetches max 100 tweets
+	tweets = twitter.search(q=search_term, result_type='popular')
+
+	tweet_processor = SentimentAnalyser()
+	scored_tweets = tweet_processor.scoreTweets(tweets['statuses'])
+
+	return []

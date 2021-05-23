@@ -15,7 +15,7 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    return fetch("/twitter", {
+    return fetch("/sentiment", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ twitterHandle }),
