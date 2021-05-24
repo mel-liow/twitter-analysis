@@ -21,7 +21,6 @@ class SentimentAnalyser:
 	def _scoreTweet(self, tweet):
 		analysis = TextBlob(tweet)
 		score = SentimentIntensityAnalyzer().polarity_scores(tweet)
-		print(score)
 		# neg = score[‘neg’]
 		# neu = score[‘neu’]
 		# pos = score[‘pos’]
