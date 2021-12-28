@@ -27,13 +27,13 @@ Generates word cloud of tweets
     ```
 
 6. NLTK data needs to be downloaded in order to load stopwords and wordnet. More information on how to download the data can be found at [NLTK.org](https://www.nltk.org/data.html). 
-# Running the project:
-This command will run a temprorary local flask server at 127.0.0.1:5000:
+# Running the project locally:
+This command will run a temprorary local flask server on port 5000:
 ```python
 npm run start-server
 ```
 
-To run the frontend React app at 127.0.0.1:3000, open a new terminal and run the following:
+To run the frontend React app on port 3000, open a new terminal and run the following:
 ```python
 npm run start
 ```
