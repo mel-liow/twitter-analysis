@@ -26,7 +26,7 @@ Generates word cloud of tweets
     TWITTER_SECRET=""
     ```
 
-6. NLTK data needs to be downloaded in order to load stopwords and wordnet. More information on how to download the data can be found at (NLTK.org)[https://www.nltk.org/data.html]. 
+6. NLTK data needs to be downloaded in order to load stopwords and wordnet. More information on how to download the data can be found at [NLTK.org](https://www.nltk.org/data.html). 
 # Running the project:
 This command will run a temprorary local flask server at 127.0.0.1:5000:
 ```python
