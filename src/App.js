@@ -1,10 +1,7 @@
 import React, { useState } from "react"
-import { Chart, ArcElement } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-import { WordCloud } from "./components";
+import { WordCloud, SentimentChart } from "./components";
 import "./App.css"
 
-Chart.register(ArcElement);
 
 const App = () => {
   const [twitterHandle, setTwitterHandle] = useState("")
@@ -59,25 +56,10 @@ const App = () => {
       </header>
       <div className="body">
         <div className="wordCloud">
-          <WordCloud data={words}/>
+          <WordCloud data={words} />
         </div>
         <div className="wordSentiment">
-          <Doughnut 
-            data={{
-              labels:['Negative', 'Neutral', 'Positive'],
-              datasets: [{
-                label: 'Sentiment',
-                data: sentiment,
-                backgroundColor: [
-                  'rgb(255, 99, 132)',
-                  'rgb(54, 162, 235)',
-                  'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-                
-              }]
-            }}
-          />
+          <SentimentChart data={sentiment} />
         </div>
       </div>
     </div>
