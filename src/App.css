@@ -40,10 +40,20 @@ input[type=submit] {
 
 .twitterHandle {
 	margin-top: 16px;
-  font-size: calc(5px + 2vmin);
+  	font-size: calc(5px + 2vmin);
 }
 
-.words {
+.body {
 	display:flex;
-	flex-direction: column
+	flex-direction: row
 }
+
+.section{
+	text-align: center;
+	font-size: 24px;
+	width: 50%;
+	padding: 48px;
+	display: flex;
+    flex-direction: column;
+}
+

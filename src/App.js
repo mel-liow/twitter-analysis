@@ -24,7 +24,7 @@ const App = () => {
       .then((data) => {
         let {words, scores} = data
 
-        const scores_array = [scores['neg'], scores['neu'], scores['neg']]
+        const scores_array = [scores['neg'], scores['neu'], scores['pos']]
         const cloud_words = JSON.parse(words).map((word) => {
           return {
             text: word[0],
@@ -41,7 +41,7 @@ const App = () => {
     <div className="app">
       <header className="header">
         <form className="form" onSubmit={handleSubmit}>
-          <label className="label">Enter Twitter handle below to generate a word cloud</label>
+          <label className="label">Enter Twitter handle below</label>
           <div>
             <input
               type="text"
@@ -55,10 +55,10 @@ const App = () => {
         <div className="twitterHandle">{twitterHandle}</div>
       </header>
       <div className="body">
-        <div className="wordCloud">
+        <div className="section">
           <WordCloud data={words} />
         </div>
-        <div className="wordSentiment">
+        <div className="section">
           <SentimentChart data={sentiment} />
         </div>
       </div>
