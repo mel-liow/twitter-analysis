@@ -27,7 +27,7 @@ def get_data():
 	words = [word for tweet in processed_tweets for word in tweet]
 
 	fdist = FreqDist(words)
-	frequent_words = json.dumps(fdist.most_common(50))
+	frequent_words = json.dumps(fdist.most_common(100))
 
 
 	# for sentiment analysis
