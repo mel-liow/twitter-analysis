@@ -1,42 +1,27 @@
 from textblob import TextBlob
 import numpy as np
 import nltk
+from collections import defaultdict
+
 nltk.download('vader_lexicon')
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 class SentimentAnalyser: 
-	def __init__(self):
-		self._positive = 0
-		self._neutral = 0
-		self._polarity = 0
 
 	def scoreTweets(self, tweets):
-		tweet_list = []
 
-		for tweet in tweets:
-			tweet_list.append(self._scoreTweet(tweet['text']))
-		return tweet_list
+		score_count = defaultdict(int)
 
-	def _scoreTweet(self, tweet):
-		analysis = TextBlob(tweet)
-		score = SentimentIntensityAnalyzer().polarity_scores(tweet)
-		# neg = score[‘neg’]
-		# neu = score[‘neu’]
-		# pos = score[‘pos’]
-		# comp = score[‘compound’]
-		# polarity += analysis.sentiment.polarity
+		scores = [SentimentIntensityAnalyzer().polarity_scores(tweet['text']) for tweet in tweets]
 		
-		# if neg > pos:
-		# negative_list.append(tweet.text)
-		# negative += 1
-		# elif pos > neg:
-		# positive_list.append(tweet.text)
-		# positive += 1
+		for score in scores:
+			if score['compound'] > 0.0:
+				score_count['pos'] += 1
+			elif score['compound'] < 0.0:
+				score_count['neg'] += 1
+			else:
+				score_count['neu'] += 1
 		
-		# elif pos == neg:
-		# neutral_list.append(tweet.text)
-		# neutral += 1
+		return score_count
 
-	def _percentage(numerator, denominator):
-		return 100 * float(numerator)/float(denominator)
