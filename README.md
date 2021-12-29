@@ -4,6 +4,8 @@ Generates word cloud of tweets
 ## Summary
 
 # Installation:
+Requires yarn package manager to be installed
+
 1. Clone the project
     ```python3
     git clone https://github.com/mel-liow/twitter-analysis.git
@@ -30,10 +32,10 @@ Generates word cloud of tweets
 # Running the project locally:
 This command will run a temprorary local flask server on port 5000:
 ```python
-npm run start-server
+yarn start-server
 ```
 
 To run the frontend React app on port 3000, open a new terminal and run the following:
 ```python
-npm run start
+yarn start
 ```
