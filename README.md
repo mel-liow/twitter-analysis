@@ -2,6 +2,7 @@
 Generates word cloud of tweets
 
 ## Summary
+![](public/twitter_analysis.gif)
 
 # Installation:
 Requires yarn package manager to be installed
