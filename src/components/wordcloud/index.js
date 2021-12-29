@@ -1,0 +1,1 @@
+export { WordCloudWrapper } from './WordCloud'
