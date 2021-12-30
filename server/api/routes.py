@@ -34,8 +34,9 @@ def get_data():
 	sentiment_tweets = twitter.search(q=twitter_handle + '-filter:retweets AND -filter:replies', count=100)
 	tweet_analyser = SentimentAnalyser()
 	scores = tweet_analyser.scoreTweets(sentiment_tweets['statuses'])
-	print(f'SCORED TWEETS', scores)
 
+	sent = tweet_analyser.getSentiment(sentiment_tweets['statuses'])
+	print(f'sent', sent)
 
 	return { 'words': frequent_words, 'scores': scores}
 
