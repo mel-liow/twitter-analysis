@@ -33,7 +33,7 @@ Requires yarn package manager to be installed
 # Running the project locally:
 This command will run a temprorary local flask server on port 5000:
 ```python
-yarn start-server
+cd server && flask run
 ```
 
 To run the frontend React app on port 3000, open a new terminal and run the following:
