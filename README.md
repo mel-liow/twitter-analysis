@@ -1,4 +1,4 @@
-# twitter-word-cloud
+# twitter-analysis
 Generates a word cloud and sentiment analysis breakdown for a twitter handle
 
 ## Summary
