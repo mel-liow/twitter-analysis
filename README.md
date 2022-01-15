@@ -1,5 +1,5 @@
 # twitter-word-cloud
-Generates word cloud of tweets
+Generates a word cloud and sentiment analysis breakdown for a twitter handle
 
 ## Summary
 ![](public/twitter_analysis.gif)
