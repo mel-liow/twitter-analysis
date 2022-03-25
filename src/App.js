@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import { WordCloud, SentimentChart } from "./components";
 import { Header, NavBar } from "./components/layout";
 
-import { Switch, Route } from 'react-router-dom'
 import { ThemeContext } from './context'
 
 import "./App.css"
@@ -51,7 +50,7 @@ const App = () => {
     <ThemeContext.Provider
       value={{ isDarkTheme, toggleTheme: setTheme }}
     >
-      <div className="app">
+      <div className={isDarkTheme ? "app-dark" : "app"}>
         <Header>
           <NavBar />
         </Header>

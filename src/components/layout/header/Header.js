@@ -8,13 +8,12 @@ export const Header = ({ children }) => {
     return (
         <ThemeContext.Consumer>
             {({ isDarkTheme, toggleTheme }) => (
-                < div className="header" >
+                < div className={isDarkTheme ? "header header-dark" : "header"} >
                     {children}
                     {isDarkTheme ?
                         <button
                             type="button"
                             className="theme-button"
-                            testid="theme"
                             onClick={toggleTheme}
                         >
                             <img
@@ -26,7 +25,6 @@ export const Header = ({ children }) => {
                         <button
                             type="button"
                             className="theme-button"
-                            testid="theme"
                             onClick={toggleTheme}
                         >
                             <img
@@ -37,7 +35,8 @@ export const Header = ({ children }) => {
                         </button>}
 
                 </div >
-            )}
+            )
+            }
         </ThemeContext.Consumer >
     )
 

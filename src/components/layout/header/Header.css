@@ -2,9 +2,14 @@
 
 .header {
     display: flex;
-    flex-direction: row;
-    flex: 1;
     background-color: #9DB5B2;
-    height: 100px;
-    color: white
+    color: white;
+    padding: 12px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-dark {
+    background-color: #3B413C;
+    color: white;
 }
