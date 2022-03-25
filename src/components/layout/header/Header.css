@@ -1,0 +1,10 @@
+
+
+.header {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    background-color: #9DB5B2;
+    height: 100px;
+    color: white
+}
