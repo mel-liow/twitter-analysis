@@ -19,7 +19,11 @@ def get_data():
     tweets = twitter.get_user_timeline(screen_name=twitter_handle, count=1)
     last_id = tweets[0]["id"] - 1
     batch = twitter.get_user_timeline(
-        screen_name=twitter_handle, count=200, max_id=last_id
+        screen_name=twitter_handle,
+        count=200,
+        max_id=last_id,
+        exclude_replies=True,
+        include_rt=False,
     )
     tweets.extend(batch)
 
